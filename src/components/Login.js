@@ -7,54 +7,54 @@ const axios = require("axios");
 class NormalLoginForm extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
-    this.props.form.validateFields(async (_err, values) => {
-      // if (err) {
-      //   console.log("Received values of form: ", values);
-      // }
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        this.Validate(values);
+      }
       // console.log();
 
-      try {
-        const response = await axios.post(
-          "ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
-          {
-            username: values.username,
-            password: values.password
-          }
-        );
+      // try {
+      //   const response = await axios.post(
+      //     "ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
+      //     {
+      //       username: values.username,
+      //       password: values.password
+      //     }
+      //   );
 
-        if (response.date.token) {
-          localStorage.setItem("LoginToken", response.data.token);
-        }
-        if (this.username === "admin" && this.password === "test") {
-          return this.props.history.push("/result-page");
-        }
-      } catch (err) {
-        console.log("error " + err);
-      }
+      //   if (response.date.token) {
+      //     localStorage.setItem("LoginToken", response.data.token);
+      //   }
+      //   if (this.username === "admin" && this.password === "test") {
+      //     return this.props.history.push("/result-page");
+      //   }
+      // } catch (err) {
+      //   console.log("error " + err);
+      // }
     });
   };
 
-  // Validate = async values => {
-  //   console.log("bunu ben yazdım :" + values);
-  //   try {
-  //     const response = await axios.post(
-  //       "ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
-  //       {
-  //         username: this.username,
-  //         password: this.password
-  //       }
-  //     );
+  Validate = async values => {
+    try {
+      const response = await axios
+        .post("http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user", {
+          password: values.password,
+          username: values.username
+        })
+        .then(res => {
+          console.log("res", res);
+        });
 
-  //     if (response.date.token) {
-  //       localStorage.setItem("LoginToken", response.data.token);
-  //     }
-  //     if (this.username === "admin" && this.password === "test") {
-  //       return this.props.history.push("/result-page");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      if (response.date.token) {
+        localStorage.setItem("LoginToken", response.data.token);
+      }
+      if (this.username === "admin" && this.password === "test") {
+        return this.props.history.push("/result-page");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -97,7 +97,6 @@ class NormalLoginForm extends React.Component {
               type="primary"
               htmlType="submit"
               className="login-form-button input"
-              onClick={this.validate}
             >
               Log in
             </Button>
