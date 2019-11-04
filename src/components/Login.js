@@ -29,7 +29,7 @@ class NormalLoginForm extends React.Component {
           return this.props.history.push("/result-page");
         }
       } catch (err) {
-        console.log(err);
+        console.log("error " + err);
       }
     });
   };
