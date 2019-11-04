@@ -5,39 +5,60 @@ import { Form, Icon, Input, Button } from "antd";
 const axios = require("axios");
 
 class NormalLoginForm extends React.Component {
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log("Received values of form: ", values);
+    this.props.form.validateFields(async (_err, values) => {
+      // if (err) {
+      //   console.log("Received values of form: ", values);
+      // }
+      // console.log();
+
+      try {
+        const response = await axios.post(
+          "ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
+          {
+            username: values.username,
+            password: values.password
+          }
+        );
+
+        if (response.date.token) {
+          localStorage.setItem("LoginToken", response.data.token);
+        }
+        if (this.username === "admin" && this.password === "test") {
+          return this.props.history.push("/result-page");
+        }
+      } catch (err) {
+        console.log("error " + err);
       }
     });
   };
 
-  validate = async () => {
-    console.log(this.props.form);
-    try {
-      const response = await axios.post(
-        "[BURAYA GEREKLİ APİ URL İ EKLENECEK]",
-        {
-          username: this.username,
-          password: this.password
-        }
-      );
+  // Validate = async values => {
+  //   console.log("bunu ben yazdım :" + values);
+  //   try {
+  //     const response = await axios.post(
+  //       "ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
+  //       {
+  //         username: this.username,
+  //         password: this.password
+  //       }
+  //     );
 
-      if (response.date.token) {
-        localStorage.setItem("LoginToken", response.data.token);
-      }
-      if (this.username === "admin" && this.password === "test") {
-        return this.props.history.push("/result-page");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     if (response.date.token) {
+  //       localStorage.setItem("LoginToken", response.data.token);
+  //     }
+  //     if (this.username === "admin" && this.password === "test") {
+  //       return this.props.history.push("/result-page");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+
     return (
       <div className="form">
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -70,11 +91,12 @@ class NormalLoginForm extends React.Component {
               />
             )}
           </Form.Item>
+
           <Form.Item className="button">
             <Button
               type="primary"
               htmlType="submit"
-              className="login-form-button"
+              className="login-form-button input"
               onClick={this.validate}
             >
               Log in

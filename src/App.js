@@ -5,18 +5,17 @@ import Container from "react-bootstrap/Container";
 import Header from "./components/Header";
 import Logo from "./components/Logo";
 import WrappedNormalLoginForm from "./components/Login";
-import Tablo from "./components/Table";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
 
 function App() {
   return (
-    <Container className="container">
+    <div>
       <Header />
-      <Logo />
-      <WrappedNormalLoginForm />
-      <Tablo />
-    </Container>
+
+      <Container className="container">
+        <Logo />
+        <WrappedNormalLoginForm />
+      </Container>
+    </div>
   );
 }
 
