@@ -39,29 +39,9 @@ class Checkbox extends Component {
         <Option value="Ders02">Ders02</Option>
         <Option value="Ders03">Ders03</Option>
       </Select>
+      // this.onTableOpen(true);
     );
   }
 }
 
 export default Checkbox;
-
-// ReactDOM.render(
-//   <Select
-//     showSearch
-//     style={{ width: 200 }}
-//     placeholder="Select a person"
-//     optionFilterProp="children"
-//     onChange={onChange}
-//     onFocus={onFocus}
-//     onBlur={onBlur}
-//     onSearch={onSearch}
-//     filterOption={(input, option) =>
-//       option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-//     }
-//   >
-//     <Option value="jack">Jack</Option>
-//     <Option value="lucy">Lucy</Option>
-//     <Option value="tom">Tom</Option>
-//   </Select>,
-//   mountNode,
-// );

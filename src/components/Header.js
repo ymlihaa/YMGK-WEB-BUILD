@@ -1,25 +1,22 @@
 import React from "react";
 import { PageHeader } from "antd";
+import "./components.css";
+import slogo from "../Slogo.png";
+import Image from "./Image";
 
 function Header() {
   return (
-    // <Navbar className="navbar" variant="light" bg="light">
-    //   <Navbar.Brand>
-    //     <Media>
-    //       <img width={70} height={70} src={logo} alt="Generic placeholder" />
-    //       <Media.Body>
-    //         <h1>FIRAT ÜNİVERSİTESİ</h1>
-    //       </Media.Body>
-    //     </Media>
-    //   </Navbar.Brand>
-    // </Navbar>
-
     <div>
       <PageHeader
+        className="header"
         style={{
           border: "1px solid rgb(235, 237, 240)"
         }}
-        title="FIRAT ÜNİVERSİTESİ"
+        title={
+          <div>
+            <b>FIRAT</b> ÜNİVERSİTESİ
+          </div>
+        }
       />
     </div>
   );

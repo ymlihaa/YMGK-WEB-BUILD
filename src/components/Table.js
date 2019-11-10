@@ -7,7 +7,6 @@ const columns = [
   { title: "Öğrenci No", dataIndex: "ogr_No", key: "ogr_No" },
   { title: "Öğrenci Adı", dataIndex: "ogr_Name", key: "ogr_Name" },
   { title: "Devamsızlık Durumu", dataIndex: "dvm_State", key: "dvm_State" },
-  { title: "Devamsızlık Sayısı", dataIndex: "dvm_Count", key: "dvm_Count" },
   {
     title: "Düzenle",
     dataIndex: "",
@@ -48,7 +47,9 @@ function Tablo() {
     <Table
       columns={columns}
       expandedRowRender={record => (
-        <p style={{ margin: 0 }}>{record.description}</p>
+        <p style={{ margin: 0 }}>
+          {record.dvm_State}: {record.dvm_Count}
+        </p>
       )}
       dataSource={data}
     />
