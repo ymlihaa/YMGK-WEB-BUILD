@@ -10,7 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class Result extends Component {
   constructor(props) {
     super(props);
-    this.state = { isTrue: false };
+    this.state = {
+      isTrue: false
+    }; /* isTrue : true yaparak tabloyu görüntüleyebilirsiniz.  */
   }
 
   // ---ÖNEMLİ--- GÖREV
