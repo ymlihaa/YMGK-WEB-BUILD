@@ -11,46 +11,26 @@ class NormalLoginForm extends React.Component {
       if (!err) {
         this.Validate(values);
       }
-      // console.log();
-
-      // try {
-      //   const response = await axios.post(
-      //     "ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
-      //     {
-      //       username: values.username,
-      //       password: values.password
-      //     }
-      //   );
-
-      //   if (response.date.token) {
-      //     localStorage.setItem("LoginToken", response.data.token);
-      //   }
-      //   if (this.username === "admin" && this.password === "test") {
-      //     return this.props.history.push("/result-page");
-      //   }
-      // } catch (err) {
-      //   console.log("error " + err);
-      // }
     });
   };
 
-  Validate = async values => {
+  Validate = async () => {
     try {
       const response = await axios
         .post("http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user", {
-          password: values.password,
-          username: values.username
+          password: this.password,
+          username: this.username
         })
         .then(res => {
           console.log("res", res);
         });
 
-      if (response.date.token) {
-        localStorage.setItem("LoginToken", response.data.token);
-      }
-      if (this.username === "admin" && this.password === "test") {
-        return this.props.history.push("/result-page");
-      }
+      // if (response.date.token) {
+      //   localStorage.setItem("LoginToken", response.data.token);
+      // }
+      // if (this.username === "admin" && this.password === "test") {
+      //   return this.props.history.push("/result-page");
+      // }
     } catch (error) {
       console.log(error);
     }
