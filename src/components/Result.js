@@ -3,6 +3,7 @@ import Table from "./Table";
 import Image from "./Image";
 import avatar from "../avatar.jpg";
 import Checkbox from "./Checkbox";
+import { withRouter } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -48,7 +49,14 @@ class Result extends Component {
           </div>
           {element}
           <div className="text-center">
-            <button type="button" class="btn btn-danger">
+            <button
+              type="button"
+              class="btn btn-danger"
+              onClick={() => {
+                localStorage.removeItem("Token");
+                this.props.history.push("/");
+              }}
+            >
               Log-Out
             </button>
           </div>

@@ -5,6 +5,7 @@ import Image from "./Image";
 import Logo from "../logo.png";
 import { Form, Icon, Input, Button } from "antd";
 import { withRouter } from "react-router-dom";
+import { notification } from "antd";
 
 const axios = require("axios");
 
@@ -15,6 +16,15 @@ class NormalLoginForm extends React.Component {
       if (!err) {
         console.log("olmlu");
       }
+    });
+  };
+
+  openNotificationWithIcon = type => {
+    console.log("bildiri");
+    notification[type]({
+      message: "Notification Title",
+      description:
+        "This is the content of the notification. This is the content of the notification. This is the content of the notification."
     });
   };
 
@@ -36,7 +46,11 @@ class NormalLoginForm extends React.Component {
           .then(res => {
             console.log("res", res);
             localStorage.setItem("Token", res.data.result);
-            if (res.data.result) this.props.history.push("/result");
+            if (res.data.result) {
+              this.props.history.push("/result");
+            } else {
+              this.openNotificationWithIcon("error");
+            }
           });
       }
     });
