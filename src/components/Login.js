@@ -19,12 +19,11 @@ class NormalLoginForm extends React.Component {
     });
   };
 
-  openNotificationWithIcon = type => {
+  openNotification = () => {
     console.log("bildiri");
-    notification[type]({
-      message: "Notification Title",
-      description:
-        "This is the content of the notification. This is the content of the notification. This is the content of the notification."
+    notification["error"]({
+      message: "Kullanıcı Adı yada Parola Hatalı !",
+      description: "Lütfen Kullanıcı Adınızı ve Parolanızı doğru giriniz."
     });
   };
 
@@ -47,12 +46,10 @@ class NormalLoginForm extends React.Component {
             console.log("res", res);
             localStorage.setItem("Token", res.data.result);
             if (res.data.result) {
-              this.props.history.push("/result");
-            } else {
-              this.openNotificationWithIcon("error");
+              return this.props.history.push("/result");
             }
           });
-      }
+      } else this.openNotification("error");
     });
   }
 
