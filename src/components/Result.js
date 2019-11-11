@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Table from "./Table";
-import Header from "./Header";
 import Image from "./Image";
 import avatar from "../avatar.jpg";
 import Checkbox from "./Checkbox";
@@ -37,8 +36,6 @@ class Result extends Component {
 
     return (
       <div>
-        <Header />
-
         <div className="container">
           <div>
             <Image width={200} path={200} path={avatar} />

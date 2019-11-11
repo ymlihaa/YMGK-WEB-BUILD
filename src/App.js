@@ -10,7 +10,6 @@ function App() {
   return (
     <div>
       <Header />
-
       <div className="container">
         <Image heigth={480} width={480} path={logo} />
         <WrappedNormalLoginForm />
