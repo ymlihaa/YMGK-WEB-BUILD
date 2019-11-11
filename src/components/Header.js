@@ -1,8 +1,8 @@
 import React from "react";
 import { PageHeader } from "antd";
 import "./components.css";
-import slogo from "../Slogo.png";
-import Image from "./Image";
+// import slogo from "../Slogo.png";
+// import Image from "./Image";
 
 function Header() {
   return (

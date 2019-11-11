@@ -11,7 +11,7 @@ class Result extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isTrue: false
+      isTrue: true
     }; /* isTrue : true yaparak tabloyu görüntüleyebilirsiniz.  */
   }
 

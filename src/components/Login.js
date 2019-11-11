@@ -9,32 +9,55 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.Validate(values);
+        console.log("olmlu");
       }
     });
   };
 
-  Validate = async () => {
-    try {
-      const response = await axios
-        .post("http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user", {
-          password: this.password,
-          username: this.username
-        })
-        .then(res => {
-          console.log("res", res);
-        });
+  // Validate = values => {
+  //   try {
+  //     const response = axios.post(
+  //       "http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
+  //       {
+  //         password: values.password,
+  //         username: values.username
+  //       }
+  //     );
+  //     console.log(response);
 
-      // if (response.date.token) {
-      //   localStorage.setItem("LoginToken", response.data.token);
-      // }
-      // if (this.username === "admin" && this.password === "test") {
-      //   return this.props.history.push("/result-page");
-      // }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     // if (response.date.token) {
+  //     //   localStorage.setItem("LoginToken", response.data.token);
+  //     // }
+  //     // if (this.username === "admin" && this.password === "test") {
+  //     //   return this.props.history.push("/result-page");
+  //     // }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  Validate() {
+    console.log("validata içindesin");
+
+    this.props.form.validateFields((err, values) => {
+      console.log(values.username);
+      const model = {
+        username: values.username,
+        password: values.password
+      };
+      if (!err) {
+        axios
+          .post(
+            "http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
+            model
+          )
+          .then(res => {
+            console.log("res", res);
+            localStorage.setItem("Token", res.data.result);
+          });
+      }
+    });
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -77,6 +100,9 @@ class NormalLoginForm extends React.Component {
               type="primary"
               htmlType="submit"
               className="login-form-button input"
+              onClick={() => {
+                this.Validate();
+              }}
             >
               Log in
             </Button>

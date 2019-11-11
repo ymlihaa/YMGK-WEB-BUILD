@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Container from "react-bootstrap/Container";
 import Header from "./components/Header";
 import Image from "./components/Image";
 import logo from "./logo.png";
@@ -13,7 +12,7 @@ function App() {
       <Header />
 
       <div className="container">
-        <Image heigth={400} width={400} path={logo} />
+        <Image heigth={480} width={480} path={logo} />
         <WrappedNormalLoginForm />
       </div>
     </div>
