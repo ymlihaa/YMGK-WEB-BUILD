@@ -36,7 +36,7 @@ class NormalLoginForm extends React.Component {
           .then(res => {
             console.log("res", res);
             localStorage.setItem("Token", res.data.result);
-            this.props.history.push("/result");
+            if (res.data.result) this.props.history.push("/result");
           });
       }
     });
