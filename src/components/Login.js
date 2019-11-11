@@ -14,30 +14,25 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log("olmlu");
       }
     });
   };
 
-  openNotification = () => {
-    console.log("bildiri");
-    notification["error"]({
-      message: "Kullanıcı Adı yada Parola Hatalı !",
-      description: "Lütfen Kullanıcı Adınızı ve Parolanızı doğru giriniz."
+  openNotification = type => {
+    notification[type]({
+      message: "Kullanıcı Adı yada şifre yanlış !",
+      description: "Kullanıcı Adı yada şifre yanlış !"
     });
   };
 
-  Validate() {
-    console.log("validata içindesin");
-
+  Validate = () => {
     this.props.form.validateFields((err, values) => {
-      console.log(values.username);
       const model = {
         username: values.username,
         password: values.password
       };
       if (!err) {
-        axios
+        const response = axios
           .post(
             "http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
             model
@@ -46,12 +41,18 @@ class NormalLoginForm extends React.Component {
             console.log("res", res);
             localStorage.setItem("Token", res.data.result);
             if (res.data.result) {
+              console.log("burada");
               return this.props.history.push("/result");
             }
+            // return res.data.suc
+            //   ? this.props.history.push("/result")
+            //   : this.openNotificationWithIcon("error");
           });
-      } else this.openNotification("error");
+      } else {
+        return this.openNotification("error");
+      }
     });
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;

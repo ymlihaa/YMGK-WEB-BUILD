@@ -4,6 +4,7 @@ import Image from "./Image";
 import avatar from "../avatar.jpg";
 import Checkbox from "./Checkbox";
 import { withRouter } from "react-router-dom";
+import teachAvatar from "../teachAvatar.png";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -38,13 +39,15 @@ class Result extends Component {
     return (
       <div>
         <div className="container">
-          <div>
-            <Image width={200} path={200} path={avatar} />
+          <div className="image">
+            <Image width={200} path={200} path={teachAvatar} />
           </div>
-          <div className="text-center">
-            BURAYA LOGİN YAPMIŞ HOCANIN ADI GELİCEK
+          <div className=" checkbox ">
+            <h1 className="text-center">
+              <b>Fatih Özkaynak</b>
+            </h1>
           </div>
-          <div className="text-center">
+          <div className="text-center checkbox ">
             <Checkbox onTableOpen={this.openTable} />
           </div>
           {element}

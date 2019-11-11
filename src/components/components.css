@@ -26,3 +26,13 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.image {
+  margin: 25px;
+}
+.checkbox {
+  margin-bottom: 30px;
+}
+.table {
+  margin-bottom: 30;
+}
