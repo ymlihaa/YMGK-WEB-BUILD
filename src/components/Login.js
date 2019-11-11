@@ -14,28 +14,6 @@ class NormalLoginForm extends React.Component {
     });
   };
 
-  // Validate = values => {
-  //   try {
-  //     const response = axios.post(
-  //       "http://ymk-api-1.us-east-2.elasticbeanstalk.com/login/user",
-  //       {
-  //         password: values.password,
-  //         username: values.username
-  //       }
-  //     );
-  //     console.log(response);
-
-  //     // if (response.date.token) {
-  //     //   localStorage.setItem("LoginToken", response.data.token);
-  //     // }
-  //     // if (this.username === "admin" && this.password === "test") {
-  //     //   return this.props.history.push("/result-page");
-  //     // }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   Validate() {
     console.log("validata içindesin");
 
